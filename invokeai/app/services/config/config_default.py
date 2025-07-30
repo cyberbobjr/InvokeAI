@@ -197,6 +197,9 @@ class InvokeAIAppConfig(BaseSettings):
     remote_api_tokens: Optional[list[URLRegexTokenPair]] = Field(default=None, description="List of regular expression and token pairs used when downloading models from URLs. The download URL is tested against the regex, and if it matches, the token is provided in as a Bearer token.")
     scan_models_on_startup:        bool = Field(default=False,              description="Scan the models directory on startup, registering orphaned models. This is typically only used in conjunction with `use_memory_db` for testing purposes.")
 
+    # LLM
+    openai_api_key: Optional[str] = Field(default=None, description="OpenAI API key for LLM integration.", exclude=True)
+
     # fmt: on
 
     model_config = SettingsConfigDict(env_prefix="INVOKEAI_", env_ignore_empty=True)

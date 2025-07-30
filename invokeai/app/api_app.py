@@ -27,6 +27,7 @@ from invokeai.app.api.routers import (
     style_presets,
     utilities,
     workflows,
+    llm,
 )
 from invokeai.app.api.sockets import SocketIO
 from invokeai.app.services.config.config_default import get_config
@@ -131,6 +132,7 @@ app.include_router(app_info.app_router, prefix="/api")
 app.include_router(session_queue.session_queue_router, prefix="/api")
 app.include_router(workflows.workflows_router, prefix="/api")
 app.include_router(style_presets.style_presets_router, prefix="/api")
+app.include_router(llm.llm_router, prefix="/api")
 
 app.openapi = get_openapi_func(app)
 

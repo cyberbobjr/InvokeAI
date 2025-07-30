@@ -1,4 +1,4 @@
-import { Box, Flex, Textarea } from '@invoke-ai/ui-library';
+import { Box, Flex, Spacer, Textarea } from '@invoke-ai/ui-library';
 import { useStore } from '@nanostores/react';
 import { useAppDispatch, useAppSelector } from 'app/store/storeHooks';
 import { usePersistedTextAreaSize } from 'common/hooks/usePersistedTextareaSize';
@@ -11,6 +11,8 @@ import {
 import { promptGenerationFromImageDndTarget } from 'features/dnd/dnd';
 import { DndDropTarget } from 'features/dnd/DndDropTarget';
 import { ShowDynamicPromptsPreviewButton } from 'features/dynamicPrompts/components/ShowDynamicPromptsPreviewButton';
+import LLMButton from 'features/llm/LLMButton';
+import LLMTranslationButton from 'features/llm/LLMTranslationButton';
 import { NegativePromptToggleButton } from 'features/parameters/components/Core/NegativePromptToggleButton';
 import { PromptLabel } from 'features/parameters/components/Prompts/PromptLabel';
 import { PromptOverlayButtonWrapper } from 'features/parameters/components/Prompts/PromptOverlayButtonWrapper';
@@ -116,11 +118,14 @@ export const ParamPositivePrompt = memo(() => {
             isDisabled={isPromptExpansionPending}
           />
           <PromptOverlayButtonWrapper>
-            <Flex flexDir="column" gap={2} justifyContent="flex-start" alignItems="center">
+            <Flex flexDir="column" gap={2} justifyContent="flex-start" alignItems="center" h="full">
               <AddPromptTriggerButton isOpen={isOpen} onOpen={onOpen} />
               {baseModel === 'sdxl' && <SDXLConcatButton />}
               <ShowDynamicPromptsPreviewButton />
               {modelSupportsNegativePrompt && <NegativePromptToggleButton />}
+              <Spacer />
+              <LLMButton />
+              <LLMTranslationButton />
             </Flex>
             {isPromptExpansionEnabled && <PromptExpansionMenu />}
           </PromptOverlayButtonWrapper>
