@@ -140,8 +140,12 @@ export const getDefaultAppConfig = (): AppConfig => ({
   allowPrivateStylePresets: false,
   allowClientSideUpload: false,
   allowPublishWorkflows: false,
+<<<<<<< HEAD
   allowPromptExpansion: false,
   allowVideo: false, // used to determine if video is enabled vs upsell
+=======
+  allowPromptExpansion: true,
+>>>>>>> d7b14096b (Add OpenAI Vision decoder)
   shouldShowCredits: false,
   disabledTabs: ['video'], // used to determine if video functionality is visible
   disabledFeatures: ['lightbox', 'faceRestore', 'batches'] satisfies AppFeature[],

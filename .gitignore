@@ -192,3 +192,20 @@ installer/InvokeAI-Installer/
 .aider*
 
 .claude/
+<<<<<<< HEAD
+
+.pnpm-store/
+configs/
+databases/
+package-lock.json
+models/
+outputs/
+invokeai.yaml
+*.backup
+=======
+models
+outputs
+databases
+configs
+invokeai.yaml
+>>>>>>> 91e30475a (Add LLM buttons)
