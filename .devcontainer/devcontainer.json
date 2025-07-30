@@ -1,0 +1,31 @@
+{
+  "name": "InvokeAI",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [
+    5173,
+    9090
+  ],
+  "runArgs": [
+    "--gpus",
+    "all"
+  ],
+  "mounts": [
+    "source=${localWorkspaceFolder}/../InvokeAI,target=/invokeai/,type=bind"
+  ],
+  "remoteUser": "root",
+  "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
+  "postStartCommand": "",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "ms-python.debugpy",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.vscode-python-envs"
+      ]
+    }
+  }
+}

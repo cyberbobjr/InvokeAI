@@ -66,6 +66,7 @@ dependencies = [
   "dnspython",
   "dynamicprompts",
   "einops",
+  "openai",
   "picklescan",
   "pillow",
   "prompt-toolkit",

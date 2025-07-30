@@ -59,7 +59,7 @@ async def get_version() -> AppVersion:
 
 @app_router.get("/app_deps", operation_id="get_app_deps", status_code=200, response_model=dict[str, str])
 async def get_app_deps() -> dict[str, str]:
-    deps: dict[str, str] = {dist.metadata["Name"]: dist.version for dist in distributions()}
+    deps: dict[str, str] = {dist.metadata["Name"]: str(dist.version) if dist.version is not None else "" for dist in distributions() if dist.metadata["Name"] is not None}
     try:
         cuda = torch.version.cuda or "N/A"
     except Exception:
@@ -67,7 +67,7 @@ async def get_app_deps() -> dict[str, str]:
 
     deps["CUDA"] = cuda
 
-    sorted_deps = dict(sorted(deps.items(), key=lambda item: item[0].lower()))
+    sorted_deps = dict(sorted(deps.items(), key=lambda item: item[0].lower() if item[0] is not None else ""))
 
     return sorted_deps
 
@@ -173,3 +173,4 @@ async def disable_invocation_cache() -> None:
 async def get_invocation_cache_status() -> InvocationCacheStatus:
     """Clears the invocation cache"""
     return ApiDependencies.invoker.services.invocation_cache.get_status()
+    

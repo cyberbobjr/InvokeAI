@@ -199,6 +199,9 @@ class InvokeAIAppConfig(BaseSettings):
     scan_models_on_startup:        bool = Field(default=False,              description="Scan the models directory on startup, registering orphaned models. This is typically only used in conjunction with `use_memory_db` for testing purposes.")
     unsafe_disable_picklescan:     bool = Field(default=False,              description="UNSAFE. Disable the picklescan security check during model installation. Recommended only for development and testing purposes. This will allow arbitrary code execution during model installation, so should never be used in production.")
 
+    # LLM
+    openai_api_key: Optional[str] = Field(default=None, description="OpenAI API key for LLM integration.", exclude=True)
+
     # fmt: on
 
     model_config = SettingsConfigDict(env_prefix="INVOKEAI_", env_ignore_empty=True)

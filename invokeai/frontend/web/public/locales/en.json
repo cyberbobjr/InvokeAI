@@ -1331,6 +1331,8 @@
         "useSize": "Use Size",
         "useCpuNoise": "Use CPU Noise",
         "remixImage": "Remix Image",
+        "invokeLLM": "Invoke LLM",
+        "translatePrompt": "Translate Prompt",
         "usePrompt": "Use Prompt",
         "useSeed": "Use Seed",
         "useClipSkip": "Use CLIP Skip",

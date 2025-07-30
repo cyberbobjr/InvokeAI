@@ -140,7 +140,7 @@ export const getDefaultAppConfig = (): AppConfig => ({
   allowPrivateStylePresets: false,
   allowClientSideUpload: false,
   allowPublishWorkflows: false,
-  allowPromptExpansion: false,
+  allowPromptExpansion: true,
   allowVideo: false, // used to determine if video is enabled vs upsell
   shouldShowCredits: false,
   disabledTabs: ['video'], // used to determine if video functionality is visible
