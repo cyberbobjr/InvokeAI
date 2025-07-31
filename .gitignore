@@ -192,3 +192,8 @@ installer/InvokeAI-Installer/
 .aider*
 
 .claude/
+.pnpm-store/
+configs/
+databases/
+nodes/
+package-lock.json
