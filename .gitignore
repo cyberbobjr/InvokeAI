@@ -192,8 +192,11 @@ installer/InvokeAI-Installer/
 .aider*
 
 .claude/
-models
-outputs
-databases
-configs
+
+.pnpm-store/
+configs/
+databases/
+nodes/
+package-lock.json
 invokeai.yaml
+outputs/
