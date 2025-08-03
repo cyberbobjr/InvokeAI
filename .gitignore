@@ -198,5 +198,6 @@ configs/
 databases/
 nodes/
 package-lock.json
-invokeai.yaml
+models/
 outputs/
+invokeai.yaml
