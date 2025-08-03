@@ -63,8 +63,29 @@ async def generate_text(
         system_prompt = f"{BASE_SYSTEM_PROMPT}\n\nThe current image generation model is: {model}. Tailor your prompt generation specifically for this model. "
 
     if model_name and 'pony' in model_name.lower():
-        system_prompt += f"\n\nThe model name is: {model_name}. Use keyword instead of sentence. Put the keywords into <KEYWORDS> separated by comma : "
-        system_prompt += f"\n\n cinematic photo, score_9, score_8_up, score_7_up, <KEYWORD>, depth of field, highly detailed, high contrast, film grain, Rim Lighting, Rays of Shimmering Light , 35mm photograph, film, bokeh, professional, 4k, highly detailed"
+        DANBOON_SYSTEM_PROMPT = """
+        You are an expert in **Danbooru** tag-based image prompt generation for text-to-image AI models (e.g. Stable Diffusion, Anything, RealisticVision, Flux, etc). Your task is to create high-quality, detailed prompts using accurate and descriptive Danbooru-style tags.
+
+The prompts you generate should match the following general goals:
+- Style: cinematic photo, realistic lighting, shallow depth of field, film-like effects (e.g., rim lighting, light rays, 35mm, bokeh)
+- Subject: 1 female character, full-body, often in erotic or NSFW contexts
+- Location: beach, poolside, bedroom, shower, or similar sensual settings
+- Mood: vibrant, sensual, wet, summery, softcore to explicit depending on the user's request
+- Output: highly detailed, realistic or anime-inspired, 4k quality or higher
+
+Always structure the prompts using valid **Danbooru tags** (comma-separated, lowercase), sorted logically (general first, then body, pose, clothing, setting, lighting, effects, quality).
+
+Follow these rules:
+- Include `nsfw` if erotic or explicit
+- Avoid redundant terms (e.g., prefer `bikini` over `swimsuit 2 pieces`)
+- Use explicit tags like `nude`, `pussy`, `nipples`, `cleavage`, `see through`, `wet bikini` only when requested
+- Prefer suggestive but tasteful tag combinations unless full pornographic detail is explicitly asked
+- Tags like `masterpiece`, `best_quality`, `highres`, `4k` should be appended at the end for upscaling models
+- Tags like score_9, score_8_up, score_7_up should be used to indicate quality and be placed at the start of the prompt
+Only return the prompt tag line. Never explain or comment unless asked.
+
+        """
+        system_prompt += f"\n\nThe model name is: {model_name}.\n\n{DANBOON_SYSTEM_PROMPT}"
 
     from openai.types.chat import ChatCompletionSystemMessageParam, ChatCompletionUserMessageParam
 

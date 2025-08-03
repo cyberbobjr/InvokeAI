@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# Set SHELL environment variable for pnpm installer
+ENV SHELL=/bin/bash
+ENV UV_HTTP_TIMEOUT=120
 RUN curl -LsSf https://get.pnpm.io/install.sh | sh
 
 # Active immédiatement node/npm pour les futures commandes Docker
@@ -25,3 +28,4 @@ ENV PATH="$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH"
 
 # Installe pipenv ou autre gestionnaire si tu veux
 RUN pip install --upgrade pip
+RUN pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu129

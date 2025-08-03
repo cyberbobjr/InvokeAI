@@ -1,5 +1,5 @@
 {
-  "name": "Node+Python+GPU Dev",
+  "name": "InvokeAI",
   "build": {
     "dockerfile": "Dockerfile"
   },
@@ -11,5 +11,7 @@
     "source=${localWorkspaceFolder}/.bash_history,target=/root/.bash_history,type=bind",
     "source=${localWorkspaceFolder}/../InvokeAI,target=/invokeai/,type=bind"
   ],
-  "remoteUser": "root"
+  "remoteUser": "root",
+  "postCreateCommand": "cd /workspaces/invokeai-dev && uv pip install -e \".[dev,test,docs,xformers]\" --system && cd /workspaces/invokeai-dev/invokeai/frontend/web && pnpm i",
+  "postStartCommand": ""
 }
