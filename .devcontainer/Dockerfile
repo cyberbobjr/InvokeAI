@@ -6,8 +6,10 @@ ENV NODE_VERSION=22.17.1
 ENV NVM_DIR=/root/.nvm
 
 RUN apt-get update && apt-get install -y \
+    vim \
     libgl1 \
     libglib2.0-0 \
+    libgl1-mesa-glx \
     curl git python3 python3-pip python3-venv build-essential rsync \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
     && . "$NVM_DIR/nvm.sh" && nvm install $NODE_VERSION && nvm alias default $NODE_VERSION \
@@ -29,3 +31,7 @@ ENV PATH="$NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH"
 # Installe pipenv ou autre gestionnaire si tu veux
 RUN pip install --upgrade pip
 RUN pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu129
+RUN git config --global --add safe.directory /workspaces/invokeai-dev
+RUN git config --global user.name "Benjamin Marchand"
+RUN git config --global user.email "ben.marchand@free.fr"
+RUN git config --global core.editor "vim"

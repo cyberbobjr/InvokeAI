@@ -138,7 +138,7 @@ export const getDefaultAppConfig = (): AppConfig => ({
   allowPrivateStylePresets: false,
   allowClientSideUpload: false,
   allowPublishWorkflows: false,
-  allowPromptExpansion: false,
+  allowPromptExpansion: true,
   shouldShowCredits: false,
   disabledTabs: [],
   disabledFeatures: ['lightbox', 'faceRestore', 'batches'] satisfies AppFeature[],

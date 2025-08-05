@@ -3,15 +3,19 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "forwardPorts": [5173, 9090],
+  "forwardPorts": [
+    5173,
+    9090
+  ],
   "runArgs": [
-    "--gpus", "all"
+    "--gpus",
+    "all"
   ],
   "mounts": [
     "source=${localWorkspaceFolder}/.bash_history,target=/root/.bash_history,type=bind",
     "source=${localWorkspaceFolder}/../InvokeAI,target=/invokeai/,type=bind"
   ],
   "remoteUser": "root",
-  "postCreateCommand": "cd /workspaces/invokeai-dev && uv pip install -e \".[dev,test,docs,xformers]\" --system && cd /workspaces/invokeai-dev/invokeai/frontend/web && pnpm i",
+  "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
   "postStartCommand": ""
 }

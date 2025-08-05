@@ -196,8 +196,8 @@ installer/InvokeAI-Installer/
 .pnpm-store/
 configs/
 databases/
-nodes/
 package-lock.json
 models/
 outputs/
 invokeai.yaml
+*.backup
